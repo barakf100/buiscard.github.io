@@ -10,6 +10,7 @@ import SandboxPage from "../pages/Sandbox/SandboxPage";
 import CreateCardPage from "../pages/createCardPage/createCardPage";
 import AuthGuard from "../Guard/AuthGuard";
 import BizGuard from "../Guard/BizGuard";
+import UserManagement from "../pages/users/UserManagement";
 
 const Router = () => {
     return (
@@ -17,6 +18,7 @@ const Router = () => {
             <Route path={ROUTES.HOME} element={<HomePage />} />
             <Route path={ROUTES.REGISTER} element={<RegisterPage />} />
             <Route path={ROUTES.LOGIN} element={<LoginPage />} />
+            <Route path={ROUTES.USER} element={<UserManagement />} />
             <Route
                 path={ROUTES.CREATECARD}
                 element={

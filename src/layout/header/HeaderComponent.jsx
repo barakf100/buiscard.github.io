@@ -17,12 +17,15 @@ import Links from "./ui/Links";
 import LeftDrawerComponent from "./ui/LeftDrawerComponent";
 import { useState } from "react";
 import FilterComponent from "./ui/FilterComponent";
+import LogoutIcon from "@mui/icons-material/Logout";
+import { useNavigate } from "react-router-dom";
+import ROUTES from "../../routes/ROUTES";
 
 const HeaderComponent = ({ isDarkTheme, onThemeChange }) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
-
+    const navigate = useNavigate();
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -53,6 +56,10 @@ const HeaderComponent = ({ isDarkTheme, onThemeChange }) => {
     const handleCloseDrawerClick = () => {
         setIsOpen(false);
     };
+    const handleLogOut = () => {
+        localStorage.removeItem("token");
+        navigate(ROUTES.LOGIN);
+    };
 
     const menuId = "primary-search-account-menu";
     const renderMenu = (
@@ -69,8 +76,7 @@ const HeaderComponent = ({ isDarkTheme, onThemeChange }) => {
                 horizontal: "right",
             }}
             open={isMenuOpen}
-            onClose={handleMenuClose}
-        >
+            onClose={handleMenuClose}>
             <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
             <MenuItem onClick={handleMenuClose}>My account</MenuItem>
         </Menu>
@@ -91,14 +97,9 @@ const HeaderComponent = ({ isDarkTheme, onThemeChange }) => {
                 horizontal: "right",
             }}
             open={isMobileMenuOpen}
-            onClose={handleMobileMenuClose}
-        >
+            onClose={handleMobileMenuClose}>
             <MenuItem>
-                <IconButton
-                    size="large"
-                    aria-label="show 4 new mails"
-                    color="inherit"
-                >
+                <IconButton size="large" aria-label="show 4 new mails" color="inherit">
                     <Badge badgeContent={4} color="error">
                         <MailIcon />
                     </Badge>
@@ -106,11 +107,7 @@ const HeaderComponent = ({ isDarkTheme, onThemeChange }) => {
                 <p>Messages!!</p>
             </MenuItem>
             <MenuItem>
-                <IconButton
-                    size="large"
-                    aria-label="show 17 new notifications"
-                    color="inherit"
-                >
+                <IconButton size="large" aria-label="show 17 new notifications" color="inherit">
                     <Badge badgeContent={17} color="error">
                         <NotificationsIcon />
                     </Badge>
@@ -123,8 +120,7 @@ const HeaderComponent = ({ isDarkTheme, onThemeChange }) => {
                     aria-label="account of current user"
                     aria-controls="primary-search-account-menu"
                     aria-haspopup="true"
-                    color="inherit"
-                >
+                    color="inherit">
                     <AccountCircle />
                 </IconButton>
                 <p>Profile</p>
@@ -142,16 +138,10 @@ const HeaderComponent = ({ isDarkTheme, onThemeChange }) => {
                         color="inherit"
                         aria-label="open drawer"
                         sx={{ mr: 2 }}
-                        onClick={handleOpenDrawerClick}
-                    >
+                        onClick={handleOpenDrawerClick}>
                         <MenuIcon />
                     </IconButton>
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="div"
-                        sx={{ display: { xs: "none", sm: "block" } }}
-                    >
+                    <Typography variant="h6" noWrap component="div" sx={{ display: { xs: "none", sm: "block" } }}>
                         LOGO
                     </Typography>
                     <Links />
@@ -160,34 +150,21 @@ const HeaderComponent = ({ isDarkTheme, onThemeChange }) => {
                         sx={{
                             my: 2,
                             p: 1,
-                        }}
-                    >
-                        <Typography
-                            sx={{ display: { xs: "none", md: "inline" } }}
-                        >
-                            {isDarkTheme ? "Dark" : "Light"} Mode
-                        </Typography>
-                        <Switch
-                            checked={isDarkTheme}
-                            onChange={handleThemeChange}
-                        />
+                        }}>
+                        <Typography sx={{ display: { xs: "none", md: "inline" } }}>{isDarkTheme ? "Dark" : "Light"} Mode</Typography>
+                        <Switch checked={isDarkTheme} onChange={handleThemeChange} />
                     </Box>
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: "none", md: "flex" } }}>
-                        <IconButton
-                            size="large"
-                            aria-label="show 4 new mails"
-                            color="inherit"
-                        >
+                        <IconButton size="large" aria-label="log out" color="inherit" onClick={handleLogOut}>
+                            <LogoutIcon />
+                        </IconButton>
+                        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
                             <Badge badgeContent={4} color="error">
                                 <MailIcon />
                             </Badge>
                         </IconButton>
-                        <IconButton
-                            size="large"
-                            aria-label="show 17 new notifications"
-                            color="inherit"
-                        >
+                        <IconButton size="large" aria-label="show 17 new notifications" color="inherit">
                             <Badge badgeContent={17} color="error">
                                 <NotificationsIcon />
                             </Badge>
@@ -199,8 +176,7 @@ const HeaderComponent = ({ isDarkTheme, onThemeChange }) => {
                             aria-controls={menuId}
                             aria-haspopup="true"
                             onClick={handleProfileMenuOpen}
-                            color="inherit"
-                        >
+                            color="inherit">
                             <AccountCircle />
                         </IconButton>
                     </Box>
@@ -211,8 +187,7 @@ const HeaderComponent = ({ isDarkTheme, onThemeChange }) => {
                             aria-controls={mobileMenuId}
                             aria-haspopup="true"
                             onClick={handleMobileMenuOpen}
-                            color="inherit"
-                        >
+                            color="inherit">
                             <MoreIcon />
                         </IconButton>
                     </Box>
@@ -220,10 +195,7 @@ const HeaderComponent = ({ isDarkTheme, onThemeChange }) => {
             </AppBar>
             {renderMobileMenu}
             {renderMenu}
-            <LeftDrawerComponent
-                isOpen={isOpen}
-                onCloseDrawer={handleCloseDrawerClick}
-            />
+            <LeftDrawerComponent isOpen={isOpen} onCloseDrawer={handleCloseDrawerClick} />
         </Box>
     );
 };
