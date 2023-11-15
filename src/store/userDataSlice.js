@@ -1,19 +1,26 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { userData } from "../pages/profile/userData/userData";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { getToken } from "../service/storageService";
+import { jwtDecode } from "jwt-decode";
+import axios from "axios";
+export const userData = createAsyncThunk("content/userData", async () => {
+    const token = getToken();
+    const dataFromToken = jwtDecode(token);
+    const { data } = await axios.get(`/users/${dataFromToken._id}`);
+    return data;
+});
+const initialState = {
+    data: {},
+};
 
-// Create user slice
-const userSlice = createSlice({
-    name: "user",
-    initialState: {
-        userData: null,
-        error: null,
-    },
-    reducers: {
-        setData(state) {
-            state.userData = userData();
-        },
+const userData1 = createSlice({
+    name: "userData",
+    initialState,
+    reducers: {},
+    extraReducers: (builder) => {
+        builder.addCase(userData.fulfilled, (state, action) => {
+            state.data = action.payload;
+        });
     },
 });
-
-// Export actions and reducer
-export default userSlice.reducer;
+// export const dataActions = userData1.actions;
+export default userData1.reducer;

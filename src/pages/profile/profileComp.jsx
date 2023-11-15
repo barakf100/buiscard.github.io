@@ -1,19 +1,19 @@
-import { Avatar, Box, Button, CssBaseline, Grid, Paper, Typography } from "@mui/material";
-import { userData } from "./userData/userData";
-import { useEffect, useState } from "react";
-const ProfileComponent = ({ user }) => {
-    const [thatUserData, setUserData] = useState("");
+import { Avatar, Box, CssBaseline, Grid, Typography } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+// import { dataActions } from "../../store/userDataSlice";
+import { Fragment, useEffect } from "react";
+import { userData } from "../../store/userDataSlice";
+const ProfileComponent = () => {
+    const dispatch = useDispatch();
     useEffect(() => {
-        userData()
-            .then((dataFromUser) => {
-                setUserData(dataFromUser);
-                console.log(thatUserData);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }, [thatUserData]);
+        dispatch(userData());
+    }, [dispatch]);
+    const data = useSelector((bigPie) => bigPie.userDataSlice.data);
+    console.log(data);
     return (
+        // <Fragment>
+        //     {data.email},{data?.name?.first}
+        // </Fragment>
         <Grid container>
             <CssBaseline />
             <Box
@@ -30,9 +30,9 @@ const ProfileComponent = ({ user }) => {
                     alignItems: "center",
                 }}>
                 <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                    <Avatar alt="name" src="" sx={{ width: 56, height: 56 }} />
+                    <Avatar alt="name" src={data.image?.url} sx={{ width: 65, height: 65, backgroundColor: "white" }} />
                     <Typography variant="h5" component="h1" color="white">
-                        {user.name.first}
+                        {`${data.name?.first} ${data.name?.last}`}
                     </Typography>
                 </Box>
             </Box>
@@ -41,67 +41,67 @@ const ProfileComponent = ({ user }) => {
                     first name
                 </Grid>
                 <Grid item xs={3}>
-                    {console.log("in grid", user.name.first)}
+                    {data.name?.first}
                 </Grid>
                 <Grid item xs={3}>
                     mid name
                 </Grid>
                 <Grid item xs={3}>
-                    the mid name
+                    {data.name?.middle ? data.name?.middle : "not in system"}
                 </Grid>
                 <Grid item xs={3}>
                     last name
                 </Grid>
                 <Grid item xs={3}>
-                    the last name
+                    {data.name?.last}
                 </Grid>
                 <Grid item xs={3}>
                     email
                 </Grid>
                 <Grid item xs={3}>
-                    the email
+                    {data.email}
                 </Grid>
                 <Grid item xs={3}>
                     phone
                 </Grid>
                 <Grid item xs={3}>
-                    the phone
+                    {data.phone}
                 </Grid>
                 <Grid item xs={3}>
                     state
                 </Grid>
                 <Grid item xs={3}>
-                    the state
+                    {data.address?.state ? data.address?.state : "not in system"}
                 </Grid>
                 <Grid item xs={3}>
                     country
                 </Grid>
                 <Grid item xs={3}>
-                    the country
+                    {data.address?.country}
                 </Grid>
                 <Grid item xs={3}>
                     city
                 </Grid>
                 <Grid item xs={3}>
-                    the city
+                    {data.address?.city}
                 </Grid>
                 <Grid item xs={3}>
                     street
                 </Grid>
                 <Grid item xs={3}>
-                    the street
+                    {data.address?.street}
                 </Grid>
                 <Grid item xs={3}>
                     house number
                 </Grid>
                 <Grid item xs={3}>
-                    the house number
+                    {data.address?.houseNumber}
                 </Grid>
                 <Grid item xs={3}>
                     ZIP code
                 </Grid>
                 <Grid item xs={3}>
-                    the ZIP code
+                    {data.address?.zip}
                 </Grid>
             </Grid>
         </Grid>

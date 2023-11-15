@@ -2,12 +2,12 @@ import { jwtDecode } from "jwt-decode";
 import { getToken } from "../../../service/storageService";
 import axios from "axios";
 
-export const userData = async () => {
+export const userData = async (setState) => {
+    const token = getToken();
+    const dataFromToken = jwtDecode(token);
     try {
-        const token = getToken();
-        const dataFromToken = jwtDecode(token);
         const { data } = await axios.get(`/users/${dataFromToken._id}`);
-        return data;
+        return setState(data);
     } catch (err) {
         console.log(err.message);
     }
