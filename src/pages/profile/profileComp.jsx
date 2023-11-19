@@ -1,19 +1,19 @@
-import { Avatar, Box, CssBaseline, Grid, Typography } from "@mui/material";
+import { Avatar, Box, Button, CssBaseline, Divider, Grid, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-// import { dataActions } from "../../store/userDataSlice";
-import { Fragment, useEffect } from "react";
+import { useEffect } from "react";
 import { userData } from "../../store/userDataSlice";
+import EditPopUp from "./editPopUp";
 const ProfileComponent = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(userData());
     }, [dispatch]);
     const data = useSelector((bigPie) => bigPie.userDataSlice.data);
-    console.log(data);
+    const theme = useSelector((bigPie) => bigPie.darkThemeSlice.darkTheme);
+    let color;
+    if (theme) color = "rgba(255,255,255,0.6)";
+    else color = "rgba(0,0,0,0.6)";
     return (
-        // <Fragment>
-        //     {data.email},{data?.name?.first}
-        // </Fragment>
         <Grid container>
             <CssBaseline />
             <Box
@@ -30,78 +30,97 @@ const ProfileComponent = () => {
                     alignItems: "center",
                 }}>
                 <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                    <Avatar alt="name" src={data.image?.url} sx={{ width: 65, height: 65, backgroundColor: "white" }} />
-                    <Typography variant="h5" component="h1" color="white">
-                        {`${data.name?.first} ${data.name?.last}`}
+                    <Avatar alt="name" src={data.image?.url} sx={{ width: 100, height: 100, backgroundColor: "white" }} />
+                    <Typography variant="h5" component="h1" color="white" mt={3}>
+                        {`${data.name?.first} ${data.name?.middle ? data.name?.middle : ""} ${data.name?.last}`}
                     </Typography>
                 </Box>
             </Box>
-            <Grid container spacing={2} marginTop={3}>
-                <Grid item xs={3}>
-                    first name
+            <Box sx={{ width: "84vw", display: "flex", justifyContent: "flex-end" }}>
+                <Button>
+                    <EditPopUp dispatch={dispatch} />
+                </Button>
+            </Box>
+            <Grid container spacing={1} marginTop={3} textAlign="center">
+                <Grid item xs={6}>
+                    <Grid item xs={12} fontWeight="Medium">
+                        First name
+                    </Grid>
+                    <Grid item xs={12} color={color}>
+                        {data.name?.first}
+                        <Divider />
+                    </Grid>
+                    <Grid item xs={12} fontWeight="Medium">
+                        Mid name
+                    </Grid>
+                    <Grid item xs={12} color={color}>
+                        {data.name?.middle ? data.name?.middle : "not in system"}
+                        <Divider />
+                    </Grid>
+                    <Grid item xs={12} fontWeight="Medium">
+                        Last name
+                    </Grid>
+                    <Grid item xs={12} color={color}>
+                        {data.name?.last}
+                        <Divider />
+                    </Grid>
+                    <Grid item xs={12} fontWeight="Medium">
+                        Email
+                    </Grid>
+                    <Grid item xs={12} color={color}>
+                        {data.email}
+                        <Divider />
+                    </Grid>
+                    <Grid item xs={12} fontWeight="Medium">
+                        Phone
+                    </Grid>
+                    <Grid item xs={12} color={color}>
+                        {data.phone}
+                        <Divider />
+                    </Grid>
                 </Grid>
-                <Grid item xs={3}>
-                    {data.name?.first}
-                </Grid>
-                <Grid item xs={3}>
-                    mid name
-                </Grid>
-                <Grid item xs={3}>
-                    {data.name?.middle ? data.name?.middle : "not in system"}
-                </Grid>
-                <Grid item xs={3}>
-                    last name
-                </Grid>
-                <Grid item xs={3}>
-                    {data.name?.last}
-                </Grid>
-                <Grid item xs={3}>
-                    email
-                </Grid>
-                <Grid item xs={3}>
-                    {data.email}
-                </Grid>
-                <Grid item xs={3}>
-                    phone
-                </Grid>
-                <Grid item xs={3}>
-                    {data.phone}
-                </Grid>
-                <Grid item xs={3}>
-                    state
-                </Grid>
-                <Grid item xs={3}>
-                    {data.address?.state ? data.address?.state : "not in system"}
-                </Grid>
-                <Grid item xs={3}>
-                    country
-                </Grid>
-                <Grid item xs={3}>
-                    {data.address?.country}
-                </Grid>
-                <Grid item xs={3}>
-                    city
-                </Grid>
-                <Grid item xs={3}>
-                    {data.address?.city}
-                </Grid>
-                <Grid item xs={3}>
-                    street
-                </Grid>
-                <Grid item xs={3}>
-                    {data.address?.street}
-                </Grid>
-                <Grid item xs={3}>
-                    house number
-                </Grid>
-                <Grid item xs={3}>
-                    {data.address?.houseNumber}
-                </Grid>
-                <Grid item xs={3}>
-                    ZIP code
-                </Grid>
-                <Grid item xs={3}>
-                    {data.address?.zip}
+                <Grid item xs={6}>
+                    <Grid item xs={12} fontWeight="Medium">
+                        State
+                    </Grid>
+                    <Grid item xs={12} color={color}>
+                        {data.address?.state ? data.address?.state : "not in system"}
+                        <Divider />
+                    </Grid>
+                    <Grid item xs={12} fontWeight="Medium">
+                        Country
+                    </Grid>
+                    <Grid item xs={12} color={color}>
+                        {data.address?.country}
+                        <Divider />
+                    </Grid>
+                    <Grid item xs={12} fontWeight="Medium">
+                        City
+                    </Grid>
+                    <Grid item xs={12} color={color}>
+                        {data.address?.city}
+                        <Divider />
+                    </Grid>
+                    <Grid item xs={12} fontWeight="Medium">
+                        Street
+                    </Grid>
+                    <Grid item xs={12} color={color}>
+                        {data.address?.street}
+                        <Divider />
+                    </Grid>
+                    <Grid item xs={12} fontWeight="Medium">
+                        House number
+                    </Grid>
+                    <Grid item xs={12} color={color}>
+                        {data.address?.houseNumber}
+                        <Divider />
+                    </Grid>
+                    <Grid item xs={12} fontWeight="Medium">
+                        ZIP code
+                    </Grid>
+                    <Grid item xs={12} color={color}>
+                        {data.address?.zip}
+                    </Grid>
                 </Grid>
             </Grid>
         </Grid>
