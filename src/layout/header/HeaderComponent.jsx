@@ -20,15 +20,19 @@ import FilterComponent from "./ui/FilterComponent";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../../routes/ROUTES";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import { useDispatch } from "react-redux";
+import { authActions } from "../../store/authSlice";
 
 const HeaderComponent = ({ isDarkTheme, onThemeChange }) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
     const handleProfileMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -58,6 +62,7 @@ const HeaderComponent = ({ isDarkTheme, onThemeChange }) => {
     };
     const handleLogOut = () => {
         localStorage.removeItem("token");
+        dispatch(authActions.logout());
         navigate(ROUTES.LOGIN);
     };
 
@@ -151,8 +156,10 @@ const HeaderComponent = ({ isDarkTheme, onThemeChange }) => {
                             my: 2,
                             p: 1,
                         }}>
-                        <Typography sx={{ display: { xs: "none", md: "inline" } }}>{isDarkTheme ? "Dark" : "Light"} Mode</Typography>
-                        <Switch checked={isDarkTheme} onChange={handleThemeChange} />
+                        <Typography sx={{ display: { xs: "none", md: "inline" } }} onClick={handleThemeChange}>
+                            {isDarkTheme ? <DarkModeIcon /> : <LightModeIcon />}
+                        </Typography>
+                        {/* <Switch checked={isDarkTheme} onChange={handleThemeChange} /> */}
                     </Box>
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: "none", md: "flex" } }}>

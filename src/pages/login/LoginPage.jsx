@@ -37,14 +37,12 @@ const LoginPage = () => {
                 email: emailValue,
                 password: passwordValue,
             });
-            console.log("joiResponse", joiResponse);
             setErrorsState(joiResponse);
             if (joiResponse) return;
             let { data } = await axios.post("/users/login", {
                 email: emailValue,
                 password: passwordValue,
             });
-            // localStorage.setItem("token", data);
             storeToken(data, rememberMe);
             console.log("data from login", data);
             toast("You logged in successfully 👌", {

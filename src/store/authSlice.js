@@ -1,25 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  loggedIn: false,
-  userData: undefined,
+    loggedIn: false,
+    userData: undefined,
+    isAdmin: false,
 };
 
 const authSlice = createSlice({
-  name: "auth",
-  initialState,
-  reducers: {
-    //collection of functions to setState
-    login(state, action) {
-      state.loggedIn = true;
-      // console.log("action", action);
-      state.userData = action.payload;
-      console.log("payload", action.payload);
+    name: "auth",
+    initialState,
+    reducers: {
+        //collection of functions to setState
+        login(state, action) {
+            state.loggedIn = true;
+            // console.log("action", action);
+            state.userData = action.payload;
+            if (action.payload.isAdmin) state.isAdmin = true;
+            else state.isAdmin = false;
+            console.log("payload", state.isAdmin);
+        },
+        logout(state) {
+            state.loggedIn = false;
+        },
     },
-    logout(state) {
-      state.loggedIn = false;
-    },
-  },
 });
 
 //export the set functions for the components to make use of the actions
