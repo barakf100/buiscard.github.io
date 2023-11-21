@@ -19,32 +19,32 @@ console.log(process.env);
 
 axios.defaults.baseURL = process.env.REACT_APP_SERVER_URL;
 axios.interceptors.request.use((config) => {
-  const token = getToken();
-  if (token) {
-    /*
+    const token = getToken();
+    if (token) {
+        /*
       if token exists we edit the request
       adding headers
       and sending the request to the server
     */
-    config.headers["x-auth-token"] = token;
-    /*
+        config.headers["x-auth-token"] = token;
+        /*
       headers = {
         x-auth-token:token
       }
     */
-  }
-  return config;
+    }
+    return config;
 });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Provider>
-  </React.StrictMode>
+    <React.StrictMode>
+        <Provider store={store}>
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        </Provider>
+    </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
