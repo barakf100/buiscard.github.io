@@ -1,5 +1,5 @@
 {
-    "homepage": "https://{barakf100}.github.io/{buiscard/}",
+    "homepage": "https://barakf100.github.io/<build>",
     "name": "shop-app",
     "version": "0.1.0",
     "private": true,
@@ -31,10 +31,11 @@
         "web-vitals": "^2.1.4"
     },
     "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        // "start": "react-scripts start",
+        // "build": "react-scripts build",
+        // "test": "react-scripts test",
+        // "eject": "react-scripts eject",
+        "deploy": "gh-pages -d build"
     },
     "eslintConfig": {
         "extends": [
