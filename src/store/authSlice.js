@@ -17,10 +17,10 @@ const authSlice = createSlice({
             state.userData = action.payload;
             if (action.payload.isAdmin) state.isAdmin = true;
             else state.isAdmin = false;
-            console.log("payload", state.isAdmin);
         },
         logout(state) {
             state.loggedIn = false;
+            state.isAdmin = false;
         },
     },
 });

@@ -12,7 +12,6 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
-import { Switch } from "@mui/material";
 import Links from "./ui/Links";
 import LeftDrawerComponent from "./ui/LeftDrawerComponent";
 import { useState } from "react";

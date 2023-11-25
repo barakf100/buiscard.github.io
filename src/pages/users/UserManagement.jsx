@@ -1,63 +1,61 @@
-import { useState, cloneElement } from "react";
-import { styled } from "@mui/material/styles";
+import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import Avatar from "@mui/material/Avatar";
-import IconButton from "@mui/material/IconButton";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import FolderIcon from "@mui/icons-material/Folder";
-import DeleteIcon from "@mui/icons-material/Delete";
-import UserMngComponent from "./ui/UserMngComponent";
 import nextKey from "generate-my-key";
-function generate(element) {
-  return [0, 1, 2].map((value) =>
-    cloneElement(element, {
-      key: value,
-    })
-  );
-}
+import UserComp from "./ui/userComp";
+import { deleteUser, extractData, getUserData } from "./server/userData";
 
-let initialUsersArr = [
-  { name: "kenny", id: "123" },
-  { name: "james", id: "125" },
-  { name: "john", id: "135" },
-  { name: "rick", id: "136" },
-];
-
+// let arr = [];
 const UserManagement = () => {
-  const [dense, setDense] = useState(true);
-  const [userArr, setUserArr] = useState(initialUsersArr);
-  const handleDelete = (id) => {
-    setUserArr((copyOfUsers) => copyOfUsers.filter((user) => user.id != id));
-    // initialUsersArr = initialUsersArr.filter((user) => user.id != id);
-    // console.log("initialUsersArr", initialUsersArr);
-  };
-  return (
-    <Box sx={{ flexGrow: 1, maxWidth: 752 }}>
-      <Grid item xs={12} md={6}>
-        <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
-          Avatar with text and icon
-        </Typography>
-
-        <List dense={dense}>
-          {userArr.map((user) => (
-            <UserMngComponent
-              key={nextKey()}
-              userInfo={{ userName: user.name, id: user.id, keyboard: "test" }}
-              onDelete={handleDelete}
-            />
-          ))}
-        </List>
-      </Grid>
-    </Box>
-  );
+    const [userData, setUserData] = useState("");
+    const [arr, setArr] = useState([]);
+    useEffect(() => {
+        const fetchData = async () => {
+            getUserData().then((userData) => setUserData(userData));
+        };
+        fetchData();
+    }, []);
+    useEffect(() => {
+        if (!userData) {
+            return;
+        }
+        setArr(extractData(userData));
+    }, [userData]);
+    const handleDelete = async (id, index) => {
+        await deleteUser(id);
+        setArr((prevArr) => {
+            const newArr = [...prevArr];
+            newArr.splice(index, 1);
+            return newArr;
+        });
+        console.log(id);
+    };
+    return (
+        <Box sx={{ flexGrow: 1, maxWidth: 1000 }}>
+            <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
+                User management system
+            </Typography>
+            <Grid container spacing={2}>
+                {arr.map((user, index) => (
+                    <Grid item xs={12} md={3}>
+                        <UserComp
+                            key={nextKey()}
+                            userInfo={{
+                                userName: user.username,
+                                createdAt: user.createDate,
+                                id: user.id,
+                                admin: user.admin,
+                                alt: user.alt,
+                                src: user.src,
+                                keyboard: "test",
+                            }}
+                            onDelete={() => handleDelete(user.id, index)}
+                        />
+                    </Grid>
+                ))}
+            </Grid>
+        </Box>
+    );
 };
 export default UserManagement;
