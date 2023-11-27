@@ -41,7 +41,7 @@ const ProfileComponent = () => {
                     <EditPopUp dispatch={dispatch} />
                 </Button>
             </Box>
-            <Grid container spacing={1} marginTop={3} textAlign="center">
+            <Grid container spacing={1} marginTop={3} textAlign="center" sx={{ height: "50vh" }}>
                 <Grid item xs={6}>
                     <Grid item xs={12} fontWeight="Medium">
                         First name

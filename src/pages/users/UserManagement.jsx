@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import nextKey from "generate-my-key";
 import UserComp from "./ui/userComp";
 import { deleteUser, extractData, getUserData } from "./server/userData";
+import FilterComponent from "../../layout/header/ui/FilterComponent";
 
 // let arr = [];
 const UserManagement = () => {
@@ -32,7 +33,7 @@ const UserManagement = () => {
         console.log(id);
     };
     return (
-        <Box sx={{ flexGrow: 1, maxWidth: 1000 }}>
+        <Box sx={{ flexGrow: 1, maxWidth: 1000, mb: 8 }}>
             <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
                 User management system
             </Typography>

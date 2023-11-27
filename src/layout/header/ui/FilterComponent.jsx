@@ -11,7 +11,6 @@ const FilterComponent = () => {
     const handleInputChange = (e) => {
         setTxt(e.target.value);
         navigate(`${ROUTES.HOME}?filter=${e.target.value}`);
-        //localhost:3000/?filter=asdfasdfasd
     };
 
     return (
@@ -19,12 +18,7 @@ const FilterComponent = () => {
             <SearchIconWrapper>
                 <SearchIcon />
             </SearchIconWrapper>
-            <StyledInputBase
-                placeholder="Search…"
-                inputProps={{ "aria-label": "search" }}
-                value={txt}
-                onChange={handleInputChange}
-            />
+            <StyledInputBase placeholder="Search…" inputProps={{ "aria-label": "search" }} value={txt} onChange={handleInputChange} />
         </Search>
     );
 };

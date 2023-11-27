@@ -60,7 +60,7 @@ const CreateCardPage = () => {
         }
     };
     return (
-        <Container sx={{ padding: "50px" }}>
+        <Container sx={{ padding: "50px", mb: 3, height: "80vh" }}>
             <Typography variant="h2" sx={{ mb: 1, padding: "10px", pb: "0px" }}>
                 Card - Create
             </Typography>

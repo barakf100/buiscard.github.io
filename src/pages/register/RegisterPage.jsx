@@ -63,6 +63,7 @@ const RegisterPage = () => {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
+                mb: 8,
             }}>
             <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
                 <LockOutlinedIcon />

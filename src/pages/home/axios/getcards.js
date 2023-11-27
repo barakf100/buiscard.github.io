@@ -8,12 +8,14 @@ const getCardFromServer = (userData, initialDataFromServer, setDataFromServer, r
     axios
         .get(req)
         .then(({ data }) => {
-            if (userData) data = homePageNormalization(data, userData._id);
-            initialDataFromServer = data;
-            if (req === "/cards") {
-                const num = getRandomArbitrary(3, data.length - 3);
-                data = data.slice(num, num + 3);
-            }
+            if (userData) {
+                data = homePageNormalization(data, userData._id);
+            } else homePageNormalization(data, "");
+            // initialDataFromServer = data;
+            // if (req === "/cards") {
+            //     const num = getRandomArbitrary(3, data.length - 3);
+            //     data = data.slice(num, num + 3);
+            // }
             setDataFromServer(data);
         })
 
