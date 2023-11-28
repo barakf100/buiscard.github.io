@@ -16,10 +16,6 @@ const HomePage = () => {
     const userData = useSelector((bigPie) => bigPie.authSlice.userData);
     const query = useQueryParams();
     useEffect(() => {
-        // working !!!
-        // console.log(userData);
-        // if (userData) getCardFromServer(userData, dataFromServer, setDataFromServer, "/cards/my-cards");
-        // else getCardFromServer(userData, dataFromServer, setDataFromServer, "/cards");
         const fetchData = async () => {
             try {
                 setDataFromServer((prevData) => {
@@ -41,9 +37,6 @@ const HomePage = () => {
     }, [userData, likes]);
 
     useEffect(() => {
-        // if (!dataFromServer.length) return;
-        // const filter = query.filter ? query.filter : "";
-        // setDataFromServer(dataFromServer.filter((card) => card.title.startsWith(filter)));
         const filter = query.filter ? query.filter : "";
         const filteredData = dataFromServer.filter((card) => card.title.startsWith(filter));
         setFilteredData(filteredData);

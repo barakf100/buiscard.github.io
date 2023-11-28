@@ -13,6 +13,7 @@ const alwaysLinks = [
 const loggedInLinks = [
     { to: ROUTES.PROFILE, children: "Profile page" },
     { to: ROUTES.CREATECARD, children: "Create page" },
+    { to: ROUTES.FAVORITES, children: "favorite page" },
 ];
 const loggedOutLinks = [
     { to: ROUTES.REGISTER, children: "Register page" },

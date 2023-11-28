@@ -8,5 +8,6 @@ const ROUTES = {
     USER: "/users",
     PROFILE: "/profile",
     ABOUT: "/about",
+    FAVORITES: "/favorites",
 };
 export default ROUTES;

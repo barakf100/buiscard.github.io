@@ -13,6 +13,7 @@ import BizGuard from "../Guard/BizGuard";
 import UserManagement from "../pages/users/UserManagement";
 import ProfileComponent from "../pages/profile/profileComp";
 import AboutComp from "../pages/about/about";
+import FavoriteComp from "../pages/favorite/favorite";
 
 const Router = () => {
     return (
@@ -35,6 +36,7 @@ const Router = () => {
             <Route path={`${ROUTES.EDITCARD}/:id`} element={<EditCardPage />} />
             <Route path={ROUTES.SANDBOX} element={<SandboxPage />}></Route>
             <Route path={ROUTES.ABOUT} element={<AboutComp />}></Route>
+            <Route path={ROUTES.FAVORITES} element={<FavoriteComp />}></Route>
             <Route path="*" element={<Error404Page />} />
         </Routes>
     );
