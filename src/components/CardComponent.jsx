@@ -4,19 +4,15 @@ import CreateIcon from "@mui/icons-material/Create";
 import DeleteIcon from "@mui/icons-material/Delete";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import PropTypes from "prop-types";
-import { useState } from "react";
 
 const CardComponent = ({ _id, title, subTitle, phone, address, img, alt, like, cardNumber, onDeleteCard, onEditCard, onLikeCard }) => {
-    // console.log("CardComponent");
     const handlePhoneClick = () => {
         console.log("you clicked on phone btn");
     };
     const handleDeleteCardClick = () => {
-        console.log("_id to delete (CardComponent)", _id);
         onDeleteCard(_id);
     };
     const handleClickEditCard = () => {
-        // console.log("move to edit card page");
         onEditCard(_id);
     };
     const handleLikedCard = () => {

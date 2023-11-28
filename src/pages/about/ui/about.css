@@ -1,0 +1,12 @@
+.head {
+    text-align: center;
+    text-decoration: underline;
+    color: blue;
+}
+.body {
+    font-size: 1.3rem;
+}
+.link {
+    color: green;
+    font-size: 1.4rem;
+}

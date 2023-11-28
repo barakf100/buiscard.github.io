@@ -7,5 +7,6 @@ const ROUTES = {
     SANDBOX: "/sandbox",
     USER: "/users",
     PROFILE: "/profile",
+    ABOUT: "/about",
 };
 export default ROUTES;
