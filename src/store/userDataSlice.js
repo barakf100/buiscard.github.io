@@ -6,7 +6,6 @@ export const userData = createAsyncThunk("content/userData", async () => {
     const token = getToken();
     const dataFromToken = jwtDecode(token);
     const { data } = await axios.get(`/users/${dataFromToken._id}`);
-    console.log("data", data.isAdmin);
     return data;
 });
 const initialState = {

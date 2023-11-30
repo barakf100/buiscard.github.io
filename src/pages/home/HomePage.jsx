@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Container, Grid, Typography, Divider, Chip } from "@mui/material";
+import { Container, Grid, Typography, Divider, Chip, Button } from "@mui/material";
 import CardComponent from "../../components/CardComponent";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../../routes/ROUTES";
@@ -11,6 +11,7 @@ import axios from "axios";
 const HomePage = () => {
     const [dataFromServer, setDataFromServer] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
+    const [endpoint, setEndpoint] = useState("/cards");
     const [likes, setLikes] = useState(false);
     const navigate = useNavigate();
     const userData = useSelector((bigPie) => bigPie.authSlice.userData);
@@ -19,12 +20,10 @@ const HomePage = () => {
         const fetchData = async () => {
             try {
                 setDataFromServer((prevData) => {
-                    let endpoint = localStorage.getItem("token") ? "/cards/my-cards" : "/cards";
                     if (userData) {
                         console.log(userData);
                         getCardFromServer(userData, prevData, setDataFromServer, endpoint);
                     } else {
-                        console.log("logout");
                         getCardFromServer(userData, prevData, setDataFromServer, endpoint);
                     }
                     return prevData;
@@ -34,7 +33,7 @@ const HomePage = () => {
             }
         };
         fetchData();
-    }, [userData, likes]);
+    }, [userData, likes, endpoint]);
 
     useEffect(() => {
         const filter = query.filter ? query.filter : "";
@@ -61,9 +60,15 @@ const HomePage = () => {
             console.log(err);
         }
     };
+    const handleAllCards = () => {
+        setEndpoint("/cards");
+    };
+    const handleMyCards = () => {
+        setEndpoint("/cards/my-cards");
+    };
     return (
-        <Container sx={{ mb: 8 }}>
-            <Container sx={{ height: "40vh", mb: 8 }}>
+        <Container sx={{ mb: 8, display: "flex", flexDirection: "column", justifyContent: "space-evenly" }}>
+            <Container sx={{ mb: 8, overflow: "scroll" }}>
                 <Typography variant="h1" sx={{ textAlign: "center", my: 3 }}>
                     BIZ Card
                 </Typography>
@@ -75,7 +80,7 @@ const HomePage = () => {
                         width: "80vw",
                         justifyContent: "space-evenly",
                     }}>
-                    <Typography variant="body1" sx={{ textAlign: "justify", mx: 4, width: "40%" }}>
+                    <Typography variant="body1" sx={{ textAlign: "justify", mx: 4, height: "100%" }}>
                         Welcome to BIZ. Cards, the ultimate hub for businesses to shine and thrive. We've created a dynamic platform where
                         entrepreneurs and companies can showcase their products and services effortlessly. At BIZ. Cards, we believe in the
                         power of connections – connecting businesses with their audience, fostering innovation, and creating a community
@@ -86,7 +91,13 @@ const HomePage = () => {
                     <img src="/assets/imgs/team.jpg" alt="team work" width="" height="100%" />
                 </Container>
             </Container>
-            <Grid container spacing={2} sx={{ mt: 3 }}>
+            <Grid container spacing={2} sx={{ mt: 8 }}>
+                <Container>
+                    <Button onClick={handleAllCards}>all cards</Button>
+                    <Button onClick={handleMyCards} disabled={!userData ? true : false}>
+                        my cards
+                    </Button>
+                </Container>
                 {filteredData.map((card) => (
                     <Grid item key={card._id} xs={12} sm={6} md={4} lg={3} sx={{ mb: 1 }}>
                         <CardComponent
