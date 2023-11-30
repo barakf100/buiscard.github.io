@@ -1,13 +1,14 @@
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import ROUTES from "../routes/ROUTES";
+import ToastGuard from "./ui/toast";
 
 const AuthGuard = ({ children }) => {
-  const loggedIn = useSelector((bigPie) => bigPie.authSlice.loggedIn);
-  if (loggedIn) {
-    return children;
-  } else {
-    return <Navigate to={ROUTES.LOGIN} replace={true} />;
-  }
+    const loggedIn = useSelector((bigPie) => bigPie.authSlice.loggedIn);
+    if (loggedIn) {
+        return children;
+    } else {
+        return ToastGuard("member") && <Navigate to={ROUTES.LOGIN} replace={true} />;
+    }
 };
 export default AuthGuard;

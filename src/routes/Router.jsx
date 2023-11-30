@@ -14,6 +14,7 @@ import UserManagement from "../pages/users/UserManagement";
 import ProfileComponent from "../pages/profile/profileComp";
 import AboutComp from "../pages/about/about";
 import FavoriteComp from "../pages/favorite/favorite";
+import AdminGuard from "../Guard/adminGuard";
 
 const Router = () => {
     return (
@@ -21,7 +22,14 @@ const Router = () => {
             <Route path={ROUTES.HOME} element={<HomePage />} />
             <Route path={ROUTES.REGISTER} element={<RegisterPage />} />
             <Route path={ROUTES.LOGIN} element={<LoginPage />} />
-            <Route path={ROUTES.USER} element={<UserManagement />} />
+            <Route
+                path={ROUTES.USER}
+                element={
+                    <AdminGuard>
+                        <UserManagement />
+                    </AdminGuard>
+                }
+            />
             <Route
                 path={ROUTES.CREATECARD}
                 element={
@@ -32,11 +40,31 @@ const Router = () => {
                     </AuthGuard>
                 }
             />
-            <Route path={`${ROUTES.PROFILE}`} element={<ProfileComponent />} />
-            <Route path={`${ROUTES.EDITCARD}/:id`} element={<EditCardPage />} />
+            <Route
+                path={`${ROUTES.PROFILE}`}
+                element={
+                    <AuthGuard>
+                        <ProfileComponent />
+                    </AuthGuard>
+                }
+            />
+            <Route
+                path={`${ROUTES.EDITCARD}/:id`}
+                element={
+                    <BizGuard>
+                        <EditCardPage />
+                    </BizGuard>
+                }
+            />
             <Route path={ROUTES.SANDBOX} element={<SandboxPage />}></Route>
             <Route path={ROUTES.ABOUT} element={<AboutComp />}></Route>
-            <Route path={ROUTES.FAVORITES} element={<FavoriteComp />}></Route>
+            <Route
+                path={ROUTES.FAVORITES}
+                element={
+                    <AuthGuard>
+                        <FavoriteComp />
+                    </AuthGuard>
+                }></Route>
             <Route path="*" element={<Error404Page />} />
         </Routes>
     );

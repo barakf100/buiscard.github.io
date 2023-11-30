@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import useQueryParams from "../../hooks/useQueryParams";
 import getCardFromServer from "./axios/getcards";
 import axios from "axios";
+import ToastGuard from "../../Guard/ui/toast";
 
 const HomePage = () => {
     const [dataFromServer, setDataFromServer] = useState([]);
@@ -42,7 +43,8 @@ const HomePage = () => {
     }, [query.filter, dataFromServer]);
 
     const handleDeleteCard = async (_id) => {
-        setDataFromServer((dataFromServerCopy) => dataFromServerCopy.filter((card) => card._id !== _id));
+        if (userData) setDataFromServer((dataFromServerCopy) => dataFromServerCopy.filter((card) => card._id !== _id));
+        else ToastGuard("member");
         try {
             await axios.delete(`/cards/${_id}`);
         } catch (err) {
@@ -57,7 +59,7 @@ const HomePage = () => {
             await axios.patch(`/cards/${_id}`);
             setLikes(!likes);
         } catch (err) {
-            console.log(err);
+            ToastGuard("member");
         }
     };
     const handleAllCards = () => {
