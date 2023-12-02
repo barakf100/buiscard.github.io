@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/buiscard.github.io/static/css/main.bb172e14.css",
-    "main.js": "/buiscard.github.io/static/js/main.3485173f.js",
+    "main.js": "/buiscard.github.io/static/js/main.e556444f.js",
     "static/js/787.ecf2960d.chunk.js": "/buiscard.github.io/static/js/787.ecf2960d.chunk.js",
     "static/media/roboto-latin-500-normal.woff2": "/buiscard.github.io/static/media/roboto-latin-500-normal.f25d774ecfe0996f8eb5.woff2",
     "static/media/roboto-latin-700-normal.woff2": "/buiscard.github.io/static/media/roboto-latin-700-normal.227c93190fe7f82de3f8.woff2",
@@ -61,11 +61,11 @@
     "static/media/roboto-greek-ext-700-normal.woff": "/buiscard.github.io/static/media/roboto-greek-ext-700-normal.249853776d22a271b2b5.woff",
     "index.html": "/buiscard.github.io/index.html",
     "main.bb172e14.css.map": "/buiscard.github.io/static/css/main.bb172e14.css.map",
-    "main.3485173f.js.map": "/buiscard.github.io/static/js/main.3485173f.js.map",
+    "main.e556444f.js.map": "/buiscard.github.io/static/js/main.e556444f.js.map",
     "787.ecf2960d.chunk.js.map": "/buiscard.github.io/static/js/787.ecf2960d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bb172e14.css",
-    "static/js/main.3485173f.js"
+    "static/js/main.e556444f.js"
   ]
 }
