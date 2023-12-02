@@ -25,7 +25,7 @@ const Error404Page = () => {
                         </Button>
                     </Grid>
                     <Grid xs={6}>
-                        <img src="/assets/imgs/output-onlinegiftools.gif" alt="404" width={500} height={400} />
+                        <img src="./output-onlinegiftools.gif" alt="404" width={500} height={400} />
                     </Grid>
                 </Grid>
             </Container>
