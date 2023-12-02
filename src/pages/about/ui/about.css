@@ -1,12 +1,13 @@
 .head {
-    text-align: center;
-    text-decoration: underline;
-    color: blue;
+    text-align: left;
+    text-decoration: none;
+    color: #464496;
+    margin-top: 40px;
 }
 .body {
     font-size: 1.3rem;
 }
 .link {
-    color: green;
+    color: #464496;
     font-size: 1.4rem;
 }

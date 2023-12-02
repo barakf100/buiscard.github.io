@@ -4,17 +4,21 @@ import { Link } from "react-router-dom";
 import "./ui/about.css";
 const AboutComp = () => {
     return (
-        <Box sx={{ textAlign: "center", mb: 8 }}>
-            <Typography variant="h1">about page</Typography>
-            <Typography variant="h6">Welcome to BIZ.Card, the platform where businesses shine and opportunities thrive!</Typography>
-            <Typography variant="h5" className="head">
+        <Box sx={{ textAlign: "left", mb: 8 }}>
+            <Typography variant="h1" textAlign="center">
+                About Page
+            </Typography>
+            <Typography variant="h5" textAlign="center" sx={{ mb: 8 }}>
+                Welcome to BIZ.Card, the platform where businesses shine and opportunities thrive!
+            </Typography>
+            <Typography variant="h4" className="head">
                 Our Mission
             </Typography>
             <Typography variant="body2" className="body">
                 At BIZ.Card, we believe in the power of connecting businesses with their audience. Our mission is to provide a dynamic and
                 user-friendly space for entrepreneurs and companies to showcase their products and services
             </Typography>
-            <Typography variant="h5" className="head">
+            <Typography variant="h4" className="head">
                 What Sets Us Apart
             </Typography>
             <Typography variant="body2" className="body">
@@ -26,26 +30,29 @@ const AboutComp = () => {
                 How It Works
             </Typography>
             <Typography variant="body1" className="body">
-                Create Your Profile: Sign up and create a profile for your business.&emsp;
+                Create Your Profile: Sign up and create a profile for your business,&nbsp;
                 <Link className="link" to="/register">
-                    here
+                    Here
                 </Link>
                 <br />
                 remember BIZ.Card is more than just a directory – it's a thriving community where businesses connect, collaborate, and grow.
                 Join us on this exciting journey, and let's build success together. Get Started Today
                 <br />
                 <br />
-                if you already have a profile you can log in.&emsp;
+                if you already have a profile you can&nbsp;
                 <Link className="link" to="/login">
-                    here
+                    Log in
                 </Link>
                 <br />
                 <br />
-                next you can create your business card.&emsp;
+                next you can create your business card,&nbsp;
                 <Link className="link" to="/createcard">
-                    here
+                    Here
                 </Link>
             </Typography>
+            <br />
+            <br />
+            <br />
             <br />
             <Typography variant="body1">
                 Thank you for choosing BIZ.Card as your platform for business success. We look forward to seeing your business thrive!

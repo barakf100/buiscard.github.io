@@ -17,7 +17,6 @@ const UserComp = ({ userInfo, onDelete }) => {
                 borderRadius: 5,
                 display: "flex",
                 justifyContent: "space-between",
-                backgroundColor: `${userInfo.admin ? "grey" : ""}`,
             }}>
             <CardHeader
                 avatar={<Avatar alt={userInfo.alt ? userInfo.alt : "profile picture"} src={userInfo.src} aria-label="recipe" />}

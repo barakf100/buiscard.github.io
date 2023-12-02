@@ -121,8 +121,8 @@ const HeaderComponent = ({ isDarkTheme, onThemeChange }) => {
     // );
 
     return (
-        <Box sx={{ flexGrow: 1, mb: 2 }}>
-            <AppBar position="static">
+        <Box sx={{ flexGrow: 1, mb: 2, position: "fixed", zIndex: 999, width: "100%" }}>
+            <AppBar position="static" color="">
                 <Toolbar>
                     <IconButton
                         size="large"
@@ -147,7 +147,7 @@ const HeaderComponent = ({ isDarkTheme, onThemeChange }) => {
                             {isDarkTheme ? <DarkModeIcon /> : <LightModeIcon />}
                         </Typography>
                     </Box>
-                    <Box sx={{ flexGrow: 1 }} />
+                    {/* <Box sx={{ flexGrow: 1 }} /> */}
                     <Box sx={{ display: { md: "flex" } }}>
                         {user ? (
                             <Avatar

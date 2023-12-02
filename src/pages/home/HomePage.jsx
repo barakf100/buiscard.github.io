@@ -40,6 +40,7 @@ const HomePage = () => {
         const filter = query.filter ? query.filter : "";
         const filteredData = dataFromServer.filter((card) => card.title.startsWith(filter));
         setFilteredData(filteredData);
+        console.log(filteredData);
     }, [query.filter, dataFromServer]);
 
     const handleDeleteCard = async (_id) => {
@@ -62,6 +63,17 @@ const HomePage = () => {
             ToastGuard("member");
         }
     };
+    const handlePhoneCard = (phone) => {
+        console.log(phone);
+        window.open(` tel:+972${phone}`, "_self");
+    };
+    const handleWhatsappCard = (phone) => {
+        let newPhone;
+        if (phone[3] === "-") {
+            newPhone = phone.slice(0, 3) + phone.slice(4, phone.length);
+        } else newPhone = phone;
+        window.open(` https://wa.me/+972${newPhone}`);
+    };
     const handleAllCards = () => {
         setEndpoint("/cards");
     };
@@ -70,7 +82,7 @@ const HomePage = () => {
     };
     return (
         <Container sx={{ mb: 8, display: "flex", flexDirection: "column", justifyContent: "space-evenly" }}>
-            <Container sx={{ mb: 8, overflow: "scroll" }}>
+            <Container sx={{ mb: 8 }}>
                 <Typography variant="h1" sx={{ textAlign: "center", my: 3 }}>
                     BIZ Card
                 </Typography>
@@ -78,11 +90,11 @@ const HomePage = () => {
                     sx={{
                         display: "flex",
                         flexDirection: "row-reverse",
-                        height: "30vh",
+                        height: "55vh",
                         width: "80vw",
                         justifyContent: "space-evenly",
                     }}>
-                    <Typography variant="body1" sx={{ textAlign: "justify", mx: 4, height: "100%" }}>
+                    <Typography variant="body1" sx={{ textAlign: "left", mx: 4, height: "100%", width: "30%" }}>
                         Welcome to BIZ. Cards, the ultimate hub for businesses to shine and thrive. We've created a dynamic platform where
                         entrepreneurs and companies can showcase their products and services effortlessly. At BIZ. Cards, we believe in the
                         power of connections – connecting businesses with their audience, fostering innovation, and creating a community
@@ -90,13 +102,15 @@ const HomePage = () => {
                         journey to amplify your presence, engage with your audience, and unlock new possibilities. Your success story begins
                         here.
                     </Typography>
-                    <img src="/assets/imgs/team.jpg" alt="team work" width="" height="100%" />
+                    <img src="/assets/imgs/team.jpg" alt="team work" width="45%" height="100%" />
                 </Container>
             </Container>
             <Grid container spacing={2} sx={{ mt: 8 }}>
                 <Container>
-                    <Button onClick={handleAllCards}>all cards</Button>
-                    <Button onClick={handleMyCards} disabled={!userData ? true : false}>
+                    <Button onClick={handleAllCards} color="inherit">
+                        all cards
+                    </Button>
+                    <Button onClick={handleMyCards} color="inherit" disabled={!userData ? true : false}>
                         my cards
                     </Button>
                 </Container>
@@ -107,6 +121,9 @@ const HomePage = () => {
                             title={card.title}
                             subTitle={card.subtitle}
                             phone={card.phone}
+                            createdAt={card.createdAt}
+                            description={card.description}
+                            web={card.web}
                             address={`${card.address.city}, ${card.address.street} ${card.address.houseNumber}`}
                             img={card.image.url}
                             alt={card.image.alt}
@@ -115,6 +132,9 @@ const HomePage = () => {
                             onDeleteCard={handleDeleteCard}
                             onEditCard={handleEditCard}
                             onLikeCard={handleLikedCard}
+                            onPhoneCard={handlePhoneCard}
+                            onWhatsappCard={handleWhatsappCard}
+                            addressForMap={`${card.address.country},${card.address.city}`}
                         />
                     </Grid>
                 ))}

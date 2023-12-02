@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import HeaderComponent from "./header/HeaderComponent";
@@ -10,14 +9,16 @@ import { darkThemeActions } from "../store/darkThemeSlice";
 import FooterComp from "./footer/footerComp";
 
 const LayoutComponent = ({ children }) => {
-    // const [isDarkTheme, setIsDarkTheme] = useState(false);
     const isDarkTheme = useSelector((bigPie) => bigPie.darkThemeSlice.darkTheme);
     const dispatch = useDispatch();
 
     const themes = tmc({
-        "text.headerColor": "!#b219e6",
-        "text.headerActive": "#9e165c",
+        "text.headerColor": "!#464496",
+        "text.headerActive": "!#ffffff",
         favActive: "*#FB0000",
+        // "text.headerColor": "!#b219e6",
+        // "text.headerActive": "#9e165c",
+        // favActive: "*#FB0000",
     });
     const darkTheme = createTheme(themes.dark);
     const lightTheme = createTheme(themes.light);

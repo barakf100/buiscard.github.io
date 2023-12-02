@@ -9,7 +9,7 @@ const FooterComp = () => {
     const linksScreenSize = useMediaQuery("(min-width:500px)");
 
     return (
-        <Paper sx={{ flexGrow: 1, bottom: 0, position: "fixed", right: 0, left: 0 }}>
+        <Paper sx={{ flexGrow: 1, bottom: 0, position: "", right: 0, left: 0 }}>
             <BottomNavigation position="static">
                 <Toolbar>
                     {linksScreenSize && <Links />}

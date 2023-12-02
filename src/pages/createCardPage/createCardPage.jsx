@@ -62,10 +62,10 @@ const CreateCardPage = () => {
     return (
         <Container sx={{ padding: "50px", mb: 3, height: "80vh" }}>
             <Typography variant="h2" sx={{ mb: 1, padding: "10px", pb: "0px" }}>
-                Card - Create
+                Create new business card
             </Typography>
             <Typography variant="body1" sx={{ mb: 1, padding: "3px", ml: "7px" }}>
-                Create new business card
+                please fill the fields below
             </Typography>
             <Divider sx={{ mb: 3 }} />
             <Grid container flexDirection={"column"}>
@@ -199,7 +199,8 @@ const CreateCardPage = () => {
                             mt: 2,
                             width: "100%",
                             ml: "0%",
-                            bgcolor: "lightskyblue",
+                            bgcolor: "#464496",
+                            color: "#fff",
                         }}
                         onClick={handleUpdateChangesClick}>
                         Create new Card
@@ -213,8 +214,8 @@ const CreateCardPage = () => {
                                 mt: 2,
                                 width: "100%",
                                 ml: "0%",
-                                bgcolor: "navy",
-                                color: "gray",
+                                bgcolor: "#000",
+                                color: "#fff",
                             }}>
                             Discard Changes
                         </Button>

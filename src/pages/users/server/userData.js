@@ -32,7 +32,7 @@ export const deleteUser = async (userId) => {
         console.log(err);
     }
 };
-const date = (inputDate) => {
+export const date = (inputDate) => {
     const date = new Date(inputDate);
 
     // Extract day, month, and year components

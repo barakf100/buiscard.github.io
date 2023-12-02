@@ -34,7 +34,7 @@ const FavoriteComp = () => {
     };
     return (
         <Box sx={{ height: "90vh" }}>
-            <Typography variant="h1">favorite page</Typography>
+            <Typography variant="h1">Favorite </Typography>
             <Grid container spacing={2} sx={{ mt: 3 }}>
                 {cardLikes.map((card) => (
                     <Grid item key={card._id} xs={12} sm={6} md={4} lg={3} sx={{ mb: 1 }}>
@@ -48,8 +48,6 @@ const FavoriteComp = () => {
                             alt={card.image.alt}
                             like={card.likes}
                             cardNumber={card.cardNumber}
-                            // onDeleteCard={handleDeleteCard}
-                            // onEditCard={handleEditCard}
                             onLikeCard={handleLikedCard}
                         />
                     </Grid>

@@ -3,11 +3,35 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import CreateIcon from "@mui/icons-material/Create";
 import DeleteIcon from "@mui/icons-material/Delete";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import PropTypes from "prop-types";
+import PopUp from "./popUpComp";
 
-const CardComponent = ({ _id, title, subTitle, phone, address, img, alt, like, cardNumber, onDeleteCard, onEditCard, onLikeCard }) => {
+const CardComponent = ({
+    _id,
+    title,
+    subTitle,
+    phone,
+    description,
+    createdAt,
+    web,
+    address,
+    img,
+    alt,
+    like,
+    cardNumber,
+    onDeleteCard,
+    onEditCard,
+    onLikeCard,
+    onPhoneCard,
+    onWhatsappCard,
+    addressForMap,
+}) => {
     const handlePhoneClick = () => {
-        console.log("you clicked on phone btn");
+        onPhoneCard(phone);
+    };
+    const handleWhatsappClick = () => {
+        onWhatsappCard(phone);
     };
     const handleDeleteCardClick = () => {
         onDeleteCard(_id);
@@ -23,7 +47,7 @@ const CardComponent = ({ _id, title, subTitle, phone, address, img, alt, like, c
             <CardActionArea>
                 <CardMedia component="img" image={img} alt={alt} sx={{ height: 185 }} />
             </CardActionArea>
-            <CardContent>
+            <CardContent sx={{}}>
                 <CardHeader title={title} subheader={subTitle} sx={{ p: 0, mb: 1 }} />
                 <Divider />
                 <Box sx={{ mt: 1 }}>
@@ -39,28 +63,55 @@ const CardComponent = ({ _id, title, subTitle, phone, address, img, alt, like, c
                         </Typography>
                         {address}
                     </Typography>
-                    <Typography variant="body2">
+                    {/* <Typography variant="body2">
                         <Typography fontWeight="700" variant="subtitle1" component="span">
                             Card Number:{" "}
                         </Typography>
                         {cardNumber}
-                    </Typography>
+                    </Typography> */}
                 </Box>
-                <Box display="flex" justifyContent="space-between">
-                    <Box>
+                <Box display="flex" justifyContent="space-between" marginTop="45px">
+                    <Box display="flex" alignItems="baseline">
                         <IconButton onClick={handlePhoneClick}>
                             <PhoneIcon />
+                        </IconButton>
+                        <IconButton onClick={handleWhatsappClick}>
+                            <WhatsAppIcon />
                         </IconButton>
                         <IconButton onClick={handleClickEditCard}>
                             <CreateIcon />
                         </IconButton>
+                        <IconButton>
+                            <PopUp
+                                {...{
+                                    _id,
+                                    title,
+                                    subTitle,
+                                    phone,
+                                    description,
+                                    createdAt,
+                                    web,
+                                    address,
+                                    img,
+                                    alt,
+                                    like,
+                                    cardNumber,
+                                    onDeleteCard,
+                                    onEditCard,
+                                    onLikeCard,
+                                    onPhoneCard,
+                                    onWhatsappCard,
+                                    addressForMap,
+                                }}
+                            />
+                        </IconButton>
                     </Box>
-                    <Box>
+                    <Box display="flex" alignItems="baseline">
                         <IconButton onClick={handleDeleteCardClick}>
                             <DeleteIcon />
                         </IconButton>
                         <IconButton>
-                            <FavoriteIcon onClick={handleLikedCard} color={like ? "error" : "inherit" /*"favActive" : ""*/} />
+                            <FavoriteIcon onClick={handleLikedCard} color={like ? "error" : "inherit"} />
                         </IconButton>
                     </Box>
                 </Box>
