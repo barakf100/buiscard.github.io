@@ -21,17 +21,7 @@ axios.defaults.baseURL = process.env.REACT_APP_SERVER_URL;
 axios.interceptors.request.use((config) => {
     const token = getToken();
     if (token) {
-        /*
-      if token exists we edit the request
-      adding headers
-      and sending the request to the server
-    */
         config.headers["x-auth-token"] = token;
-        /*
-      headers = {
-        x-auth-token:token
-      }
-    */
     }
     return config;
 });
@@ -40,7 +30,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <React.StrictMode>
         <Provider store={store}>
-            <BrowserRouter>
+            <BrowserRouter basename={process.env.PUBLIC_URL}>
                 <App />
             </BrowserRouter>
         </Provider>
