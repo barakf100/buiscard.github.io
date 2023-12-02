@@ -1,6 +1,7 @@
 import { Dialog, DialogTitle, Typography, DialogContent, Box } from "@mui/material";
 import { useState, Fragment } from "react";
 import ExpandIcon from "@mui/icons-material/Expand";
+import AspectRatioIcon from "@mui/icons-material/AspectRatio";
 import { date } from "../pages/users/server/userData.js";
 import MapComponent from "./mapComp.jsx";
 const PopUp = ({ _id, title, subTitle, phone, description, createdAt, web, address, addressForMap }) => {
@@ -13,7 +14,7 @@ const PopUp = ({ _id, title, subTitle, phone, description, createdAt, web, addre
     };
     return (
         <Fragment>
-            <ExpandIcon onClick={handleClickOpen} />
+            <AspectRatioIcon onClick={handleClickOpen} />
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle sx={{ fontSize: "2.5rem" }}>{title}</DialogTitle>
                 <DialogContent>

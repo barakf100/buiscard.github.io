@@ -61,7 +61,7 @@ const CardComponent = ({
                         <Typography fontWeight="700" variant="subtitle1" component="span">
                             Address:{" "}
                         </Typography>
-                        {address.slice(0, 25)}
+                        {address.slice(0, 20)}
                     </Typography>
                 </Box>
                 <Box display="flex" justifyContent="space-between" marginTop="45px">

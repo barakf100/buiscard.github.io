@@ -2,12 +2,12 @@
     text-align: left;
     text-decoration: none;
     color: #464496;
-    margin-top: 40px;
+    margin-top: 40px !important;
 }
 .body {
     font-size: 1.3rem;
 }
 .link {
     color: #464496;
-    font-size: 1.4rem;
+    font-size: 1rem;
 }

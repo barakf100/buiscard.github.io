@@ -87,12 +87,19 @@ const HomePage = () => {
                 <Container
                     sx={{
                         display: "flex",
-                        flexDirection: "row-reverse",
+                        flexDirection: {
+                            xs: "column-reverse",
+                            sm: "column-reverse",
+                            md: "row-reverse",
+                            lg: "row-reverse",
+                            xl: "row-reverse",
+                        },
                         height: "55vh",
-                        width: "80vw",
+                        width: "90vw",
                         justifyContent: "space-evenly",
+                        alignItems: "center",
                     }}>
-                    <Typography variant="body1" sx={{ textAlign: "left", mx: 4, height: "100%", width: "30%" }}>
+                    <Typography variant="body1" sx={{ textAlign: "left", mx: 4, height: "100%", width: { md: "100%", lg: "30vw" }, mt: 5 }}>
                         Welcome to BIZ. Cards, the ultimate hub for businesses to shine and thrive. We've created a dynamic platform where
                         entrepreneurs and companies can showcase their products and services effortlessly. At BIZ. Cards, we believe in the
                         power of connections – connecting businesses with their audience, fostering innovation, and creating a community
@@ -100,12 +107,19 @@ const HomePage = () => {
                         journey to amplify your presence, engage with your audience, and unlock new possibilities. Your success story begins
                         here.
                     </Typography>
-                    <img
-                        src="https://cdn.pixabay.com/photo/2018/03/10/12/00/teamwork-3213924_1280.jpg"
-                        alt="team work"
-                        width="45%"
-                        height="100%"
-                    />
+                    <Container
+                        sx={{
+                            width: { xs: "0", md: "65vw", lg: "40vw", xl: "45vw" },
+                            height: { xs: "0", md: "48vh", lg: "50vh", xl: "50vh" },
+                            my: 5,
+                        }}>
+                        <img
+                            src="https://cdn.pixabay.com/photo/2018/03/10/12/00/teamwork-3213924_1280.jpg"
+                            alt="team work"
+                            width="100%"
+                            height="100%"
+                        />
+                    </Container>
                 </Container>
             </Container>
             <Grid container spacing={2} sx={{ mt: 8 }}>

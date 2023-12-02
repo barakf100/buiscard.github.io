@@ -13,14 +13,14 @@ const AboutComp = () => {
             <Typography variant="h4" className="head">
                 Our Mission
             </Typography>
-            <Typography variant="body2" className="body">
+            <Typography variant="body1" className="body">
                 At BIZ.Card, we believe in the power of connecting businesses with their audience. Our mission is to provide a dynamic and
                 user-friendly space for entrepreneurs and companies to showcase their products and services
             </Typography>
             <Typography variant="h4" className="head">
                 What Sets Us Apart
             </Typography>
-            <Typography variant="body2" className="body">
+            <Typography variant="body1" className="body">
                 We are more than just a platform – we are a community that empowers businesses of all sizes. Whether you're a local startup,
                 a growing enterprise, or an established brand, BIZ.Card is your go-to destination to reach a wider audience and tell your
                 unique story.
@@ -53,7 +53,7 @@ const AboutComp = () => {
             <br />
             <br />
             <br />
-            <Typography variant="body1">
+            <Typography variant="body2">
                 Thank you for choosing BIZ.Card as your platform for business success. We look forward to seeing your business thrive!
                 <br />
                 Copyright © barak froimovich. All rights reserved.

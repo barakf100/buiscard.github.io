@@ -253,12 +253,12 @@ const RegisterPage = () => {
                         <FormControlLabel control={<Checkbox value="allowExtraEmails" color="primary" />} label="Business Account" />
                     </Grid>
                 </Grid>
-                <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+                <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2, bgcolor: "#464496" }}>
                     Sign Up
                 </Button>
                 <Grid container justifyContent="flex-end">
                     <Grid item>
-                        <Link href="login" variant="body2">
+                        <Link href="login" variant="body2" color="#464496">
                             Already have an account? Sign in
                         </Link>
                     </Grid>
