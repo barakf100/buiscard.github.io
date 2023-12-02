@@ -4,6 +4,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import { updateServer } from "./updateOnServer";
 import { validateProfile } from "../../validation/validateProfile";
 import { userData } from "../../store/userDataSlice";
+import ServerToast from "../../toast/toastServer";
 const EditPopUp = ({ dispatch }) => {
     const [open, setOpen] = useState(false);
     const [valError, setValError] = useState("");
@@ -44,7 +45,7 @@ const EditPopUp = ({ dispatch }) => {
             updateServer(inputsValue);
             handleClose();
         } catch (err) {
-            console.log(err);
+            ServerToast();
         }
     };
     return (

@@ -1,5 +1,6 @@
 import axios from "axios";
 import homePageNormalization from "../homePageNormalization";
+import ServerToast from "../../../toast/toastServer";
 
 const getCardFromServer = (userData, initialDataFromServer, setDataFromServer, req) => {
     axios
@@ -12,7 +13,7 @@ const getCardFromServer = (userData, initialDataFromServer, setDataFromServer, r
         })
 
         .catch((err) => {
-            console.log("err", err);
+            ServerToast();
         });
 };
 export default getCardFromServer;

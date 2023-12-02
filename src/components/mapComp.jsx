@@ -7,14 +7,12 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 const MapComponent = (address) => {
     const [coordinates, setCoordinates] = useState([0, 0]);
-    console.log(address.address);
     useEffect(() => {
         const geocodeAddress = async () => {
             try {
                 const response = await axios.get(
                     `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address.address)}`
                 );
-                console.log(response);
                 const data = await response.data;
 
                 if (data.length > 0) {

@@ -57,7 +57,6 @@ const EditCardPage = () => {
             navigate(ROUTES.HOME);
         } catch (err) {
             ErrorToast(err.response.data);
-            console.log(err.response.data);
         }
     };
     return (

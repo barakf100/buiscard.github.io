@@ -1,7 +1,6 @@
 import { toast } from "react-toastify";
 const toArr = (data) => {
     const dataArr = [Object.entries(data)];
-    console.log(dataArr);
     return dataArr;
 };
 export const ErrorToast = (data) => {

@@ -21,6 +21,7 @@ import { validateLogin } from "../../validation/loginValidation";
 import { Alert } from "@mui/material";
 import useAutoLogin from "../../hooks/useAutoLogin";
 import { storeToken } from "../../service/storageService";
+import ServerToast from "../../toast/toastServer";
 
 const LoginPage = () => {
     const [emailValue, setEmailValue] = useState("");
@@ -43,7 +44,6 @@ const LoginPage = () => {
                 password: passwordValue,
             });
             storeToken(data, rememberMe);
-            console.log("data from login", data);
             toast("You logged in successfully 👌", {
                 position: "top-right",
                 autoClose: 5000,
@@ -57,7 +57,7 @@ const LoginPage = () => {
             autoLogin(true); //skip token test
             navigate(ROUTES.HOME);
         } catch (err) {
-            console.log("err from login", err);
+            ServerToast();
         }
     };
     const handleEmailInputChange = (e) => {

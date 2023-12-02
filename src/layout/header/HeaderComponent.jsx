@@ -37,7 +37,6 @@ const HeaderComponent = ({ isDarkTheme, onThemeChange }) => {
     };
 
     const handleOpenDrawerClick = () => {
-        console.log(data);
         setIsOpen(true);
     };
     const handleCloseDrawerClick = () => {

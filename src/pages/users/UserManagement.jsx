@@ -30,7 +30,6 @@ const UserManagement = () => {
             newArr.splice(index, 1);
             return newArr;
         });
-        console.log(id);
     };
     const filterBy = ["member", "admin", "business"];
     const handleFilterChange = (e, value) => {

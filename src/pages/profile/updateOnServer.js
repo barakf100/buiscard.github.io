@@ -1,6 +1,7 @@
 import axios from "axios";
 import { getToken } from "../../service/storageService";
 import { jwtDecode } from "jwt-decode";
+import ServerToast from "../../toast/toastServer";
 
 export const normalizeData = (dataToNormal) => {
     return {
@@ -26,12 +27,11 @@ export const normalizeData = (dataToNormal) => {
 };
 export const updateServer = async (dataToServer) => {
     dataToServer = normalizeData(dataToServer);
-    console.log(dataToServer);
     const token = getToken();
     const dataFromToken = jwtDecode(token);
     try {
         await axios.put(`/users/${dataFromToken._id}`, dataToServer);
     } catch (err) {
-        console.log(err);
+        ServerToast();
     }
 };

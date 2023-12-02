@@ -8,6 +8,7 @@ import useQueryParams from "../../hooks/useQueryParams";
 import getCardFromServer from "./axios/getcards";
 import axios from "axios";
 import ToastGuard from "../../Guard/ui/toast";
+import ServerToast from "../../toast/toastServer";
 
 const HomePage = () => {
     const [dataFromServer, setDataFromServer] = useState([]);
@@ -22,7 +23,6 @@ const HomePage = () => {
             try {
                 setDataFromServer((prevData) => {
                     if (userData) {
-                        console.log(userData);
                         getCardFromServer(userData, prevData, setDataFromServer, endpoint);
                     } else {
                         getCardFromServer(userData, prevData, setDataFromServer, endpoint);
@@ -30,7 +30,7 @@ const HomePage = () => {
                     return prevData;
                 });
             } catch (err) {
-                console.log(err, "err");
+                ServerToast();
             }
         };
         fetchData();
@@ -40,7 +40,6 @@ const HomePage = () => {
         const filter = query.filter ? query.filter : "";
         const filteredData = dataFromServer.filter((card) => card.title.startsWith(filter));
         setFilteredData(filteredData);
-        console.log(filteredData);
     }, [query.filter, dataFromServer]);
 
     const handleDeleteCard = async (_id) => {
@@ -49,7 +48,7 @@ const HomePage = () => {
         try {
             await axios.delete(`/cards/${_id}`);
         } catch (err) {
-            console.log(err);
+            ServerToast();
         }
     };
     const handleEditCard = (_id) => {
@@ -64,7 +63,6 @@ const HomePage = () => {
         }
     };
     const handlePhoneCard = (phone) => {
-        console.log(phone);
         window.open(` tel:+972${phone}`, "_self");
     };
     const handleWhatsappCard = (phone) => {

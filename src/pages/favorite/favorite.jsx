@@ -5,6 +5,7 @@ import getCardFromServer from "../home/axios/getcards";
 import { useSelector } from "react-redux";
 import { getLikedCard } from "./axios/getLikedCard";
 import axios from "axios";
+import ServerToast from "../../toast/toastServer";
 const FavoriteComp = () => {
     const [card, setCards] = useState([]);
     const [likes, setLikes] = useState(false);
@@ -18,7 +19,7 @@ const FavoriteComp = () => {
                     return prevData;
                 });
             } catch (err) {
-                console.log(err);
+                ServerToast();
             }
             getLikedCard(card, setLikesCard);
         };
@@ -29,7 +30,7 @@ const FavoriteComp = () => {
             await axios.patch(`/cards/${_id}`);
             setLikes(!likes);
         } catch (err) {
-            console.log(err);
+            ServerToast();
         }
     };
     return (

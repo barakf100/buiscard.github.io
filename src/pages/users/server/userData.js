@@ -1,11 +1,12 @@
 import axios from "axios";
+import ServerToast from "../../../toast/toastServer";
 
 export const getUserData = async () => {
     try {
         const { data } = await axios.get(`/users`);
         return data;
     } catch (e) {
-        console.log(e);
+        ServerToast();
     }
 };
 export const extractData = (users) => {
@@ -27,9 +28,8 @@ export const extractData = (users) => {
 export const deleteUser = async (userId) => {
     try {
         const { data: delUser } = await axios.delete(`/users/${userId}`);
-        console.log(delUser);
     } catch (err) {
-        console.log(err);
+        ServerToast();
     }
 };
 export const date = (inputDate) => {
