@@ -101,7 +101,7 @@ const HomePage = () => {
                         here.
                     </Typography>
                     <img
-                        src="https://pixabay.com/photos/teamwork-cooperation-brainstorming-3213924/"
+                        src="https://cdn.pixabay.com/photo/2018/03/10/12/00/teamwork-3213924_1280.jpg"
                         alt="team work"
                         width="45%"
                         height="100%"
