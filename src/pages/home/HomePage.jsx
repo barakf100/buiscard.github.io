@@ -102,7 +102,7 @@ const HomePage = () => {
                         journey to amplify your presence, engage with your audience, and unlock new possibilities. Your success story begins
                         here.
                     </Typography>
-                    <img src="/assets/imgs/team.jpg" alt="team work" width="45%" height="100%" />
+                    <img src="./../../../public/assets/imgs/team.jpg" alt="team work" width="45%" height="100%" />
                 </Container>
             </Container>
             <Grid container spacing={2} sx={{ mt: 8 }}>
