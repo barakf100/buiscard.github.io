@@ -31,7 +31,6 @@ const registerSchema = Joi.object({
     street: Joi.string().min(2).max(256).required(),
     houseNumber: Joi.number().min(1).max(256).required(),
     zip: Joi.number().min(2).max(256).allow(""),
-    // isBusiness: Joi.boolean().required(),
 });
 
 const validateRegister = (inputToCheck) => validation(registerSchema, inputToCheck);

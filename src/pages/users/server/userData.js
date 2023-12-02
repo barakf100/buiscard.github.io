@@ -35,12 +35,10 @@ export const deleteUser = async (userId) => {
 export const date = (inputDate) => {
     const date = new Date(inputDate);
 
-    // Extract day, month, and year components
     const day = date.getUTCDate();
-    const month = date.getUTCMonth() + 1; // Months are zero-based
+    const month = date.getUTCMonth() + 1;
     const year = date.getUTCFullYear();
 
-    // Format the date as DD/MM/YYYY
     const formattedDate = `${day}/${month}/${year}`;
     return formattedDate;
 };

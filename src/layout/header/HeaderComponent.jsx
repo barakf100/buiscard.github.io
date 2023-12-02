@@ -22,8 +22,6 @@ import { userData } from "../../store/userDataSlice";
 import { useEffect } from "react";
 
 const HeaderComponent = ({ isDarkTheme, onThemeChange }) => {
-    // const [anchorEl, setAnchorEl] = useState(null);
-    // const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
     const screenSize = useMediaQuery("(min-width:700px)");
     const linksScreenSize = useMediaQuery("(min-width:500px)");
     const [isOpen, setIsOpen] = useState(false);
@@ -34,25 +32,6 @@ const HeaderComponent = ({ isDarkTheme, onThemeChange }) => {
     }, [dispatch]);
     const user = useSelector((bigPie) => bigPie.authSlice.loggedIn);
     const { data } = useSelector((bigPie) => bigPie.userDataSlice);
-    // const isMenuOpen = Boolean(anchorEl);
-    // const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-    // const handleProfileMenuOpen = (event) => {
-    //     setAnchorEl(event.currentTarget);
-    // };
-
-    // const handleMobileMenuClose = () => {
-    //     setMobileMoreAnchorEl(null);
-    // };
-
-    // const handleMenuClose = () => {
-    //     setAnchorEl(null);
-    //     handleMobileMenuClose();
-    // };
-
-    // const handleMobileMenuOpen = (event) => {
-    //     setMobileMoreAnchorEl(event.currentTarget);
-    // };
-
     const handleThemeChange = (event) => {
         onThemeChange(event.target.checked);
     };
@@ -67,59 +46,10 @@ const HeaderComponent = ({ isDarkTheme, onThemeChange }) => {
     const handleLogOut = () => {
         localStorage.removeItem("token");
         dispatch(authActions.logout());
-        // navigate(ROUTES.HOME);
     };
     const handleProfileClick = () => {
         navigate(ROUTES.PROFILE);
     };
-    // const menuId = "primary-search-account-menu";
-    // const renderMenu = (
-    //     <Menu
-    //         anchorEl={anchorEl}
-    //         anchorOrigin={{
-    //             vertical: "top",
-    //             horizontal: "right",
-    //         }}
-    //         id={menuId}
-    //         keepMounted
-    //         transformOrigin={{
-    //             vertical: "top",
-    //             horizontal: "right",
-    //         }}
-    //         open={isMenuOpen}
-    //         onClose={handleMenuClose}></Menu>
-    // );
-
-    // const mobileMenuId = "primary-search-account-menu-mobile";
-    // const renderMobileMenu = (
-    //     <Menu
-    //         anchorEl={mobileMoreAnchorEl}
-    //         anchorOrigin={{
-    //             vertical: "top",
-    //             horizontal: "right",
-    //         }}
-    //         id={mobileMenuId}
-    //         keepMounted
-    //         transformOrigin={{
-    //             vertical: "top",
-    //             horizontal: "right",
-    //         }}
-    //         open={isMobileMenuOpen}
-    //         onClose={handleMobileMenuClose}>
-    //         <MenuItem onClick={handleProfileMenuOpen}>
-    //             <IconButton
-    //                 size="large"
-    //                 aria-label="account of current user"
-    //                 aria-controls="primary-search-account-menu"
-    //                 aria-haspopup="true"
-    //                 color="inherit">
-    //                 <AccountCircle />
-    //             </IconButton>
-    //             <p>Profile</p>
-    //         </MenuItem>
-    //     </Menu>
-    // );
-
     return (
         <Box sx={{ flexGrow: 1, mb: 2, position: "fixed", zIndex: 999, width: "100%" }}>
             <AppBar position="static" color="">
@@ -129,11 +59,11 @@ const HeaderComponent = ({ isDarkTheme, onThemeChange }) => {
                         edge="start"
                         color="inherit"
                         aria-label="open drawer"
-                        sx={{ mr: 2 }}
+                        sx={{ mr: 2, display: { xs: "block", sm: "none", md: "none", lg: "none" } }}
                         onClick={handleOpenDrawerClick}>
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" noWrap component="div" sx={{ display: { xs: "none", sm: "none", md: "block" } }}>
+                    <Typography variant="h4" noWrap component="div" sx={{ display: { xs: "none", sm: "none", md: "block" } }}>
                         BIZ.Card
                     </Typography>
                     {linksScreenSize && <Links />}
@@ -162,32 +92,9 @@ const HeaderComponent = ({ isDarkTheme, onThemeChange }) => {
                         <IconButton size="large" aria-label="log out" color="inherit" onClick={handleLogOut}>
                             <LogoutIcon />
                         </IconButton>
-                        {/* <IconButton
-                            size="large"
-                            edge="end"
-                            aria-label="account of current user"
-                            aria-controls={menuId}
-                            aria-haspopup="true"
-                            onClick={handleProfileMenuOpen}
-                            color="inherit">
-                            <AccountCircle />
-                        </IconButton> */}
                     </Box>
-                    {/* <Box sx={{ display: { xs: "flex", md: "none" } }}>
-                        <IconButton
-                            size="large"
-                            aria-label="show more"
-                            aria-controls={mobileMenuId}
-                            aria-haspopup="true"
-                            onClick={handleMobileMenuOpen}
-                            color="inherit">
-                            <MoreIcon />
-                        </IconButton>
-                    </Box> */}
                 </Toolbar>
             </AppBar>
-            {/* {renderMobileMenu} */}
-            {/* {renderMenu} */}
             <LeftDrawerComponent isOpen={isOpen} onCloseDrawer={handleCloseDrawerClick} />
         </Box>
     );

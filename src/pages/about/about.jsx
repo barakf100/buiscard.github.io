@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import { Typography, Box } from "@mui/material";
 import { Link } from "react-router-dom";
 import "./ui/about.css";

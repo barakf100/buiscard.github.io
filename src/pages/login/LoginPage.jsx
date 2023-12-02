@@ -29,7 +29,6 @@ const LoginPage = () => {
     const [errorsState, setErrorsState] = useState(null);
     const navigate = useNavigate();
     const autoLogin = useAutoLogin();
-    /* logic lvl for js */
     const handleSubmit = async (event) => {
         try {
             event.preventDefault();
@@ -70,7 +69,6 @@ const LoginPage = () => {
     const handleRememberMeChange = () => {
         setRememberMe(!rememberMe);
     };
-    /* template lvl for html */
     return (
         <Grid container component="main" sx={{ height: "100vh" }}>
             <CssBaseline />

@@ -24,7 +24,6 @@ const CreateCardPage = () => {
         houseNumber: "",
         zip: "",
     });
-    // const { id: _id } = useParams();
     const handleInputChange = (e) => {
         setInputValue((currentState) => ({
             ...currentState,

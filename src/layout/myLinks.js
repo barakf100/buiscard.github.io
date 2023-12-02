@@ -7,7 +7,6 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 import LoginIcon from "@mui/icons-material/Login";
 import GroupIcon from "@mui/icons-material/Group";
-// TODO: add icon to each link when small hide write show only icon
 const myLinks = [
     { to: ROUTES.HOME, children: "Home " },
     { to: ROUTES.REGISTER, children: "Register " },

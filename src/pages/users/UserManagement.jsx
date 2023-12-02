@@ -7,7 +7,6 @@ import nextKey from "generate-my-key";
 import UserComp from "./ui/userComp";
 import { deleteUser, extractData, getUserData } from "./server/userData";
 
-// let arr = [];
 const UserManagement = () => {
     const [userData, setUserData] = useState("");
     const [arr, setArr] = useState([]);

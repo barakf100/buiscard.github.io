@@ -23,5 +23,4 @@ const userData1 = createSlice({
         });
     },
 });
-// export const dataActions = userData1.actions;
 export default userData1.reducer;

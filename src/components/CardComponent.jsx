@@ -48,7 +48,7 @@ const CardComponent = ({
                 <CardMedia component="img" image={img} alt={alt} sx={{ height: 185 }} />
             </CardActionArea>
             <CardContent sx={{}}>
-                <CardHeader title={title} subheader={subTitle} sx={{ p: 0, mb: 1 }} />
+                <CardHeader title={title.slice(0, 15)} subheader={subTitle} sx={{ p: 0, mb: 1 }} />
                 <Divider />
                 <Box sx={{ mt: 1 }}>
                     <Typography variant="body2">
@@ -61,14 +61,8 @@ const CardComponent = ({
                         <Typography fontWeight="700" variant="subtitle1" component="span">
                             Address:{" "}
                         </Typography>
-                        {address}
+                        {address.slice(0, 25)}
                     </Typography>
-                    {/* <Typography variant="body2">
-                        <Typography fontWeight="700" variant="subtitle1" component="span">
-                            Card Number:{" "}
-                        </Typography>
-                        {cardNumber}
-                    </Typography> */}
                 </Box>
                 <Box display="flex" justifyContent="space-between" marginTop="45px">
                     <Box display="flex" alignItems="baseline">

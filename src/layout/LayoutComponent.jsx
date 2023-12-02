@@ -2,7 +2,6 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import HeaderComponent from "./header/HeaderComponent";
 import MainComponent from "./main/MainComponent";
-import FooterComponent from "./footer/FooterComponent";
 import tmc from "twin-moon-color";
 import { useDispatch, useSelector } from "react-redux";
 import { darkThemeActions } from "../store/darkThemeSlice";
@@ -16,9 +15,6 @@ const LayoutComponent = ({ children }) => {
         "text.headerColor": "!#464496",
         "text.headerActive": "!#ffffff",
         favActive: "*#FB0000",
-        // "text.headerColor": "!#b219e6",
-        // "text.headerActive": "#9e165c",
-        // favActive: "*#FB0000",
     });
     const darkTheme = createTheme(themes.dark);
     const lightTheme = createTheme(themes.light);
@@ -31,7 +27,6 @@ const LayoutComponent = ({ children }) => {
             <CssBaseline />
             <HeaderComponent isDarkTheme={isDarkTheme} onThemeChange={handleThemeChange} />
             <MainComponent>{children}</MainComponent>
-            {/* <FooterComponent /> */}
             <FooterComp />
         </ThemeProvider>
     );

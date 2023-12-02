@@ -1,12 +1,10 @@
 import { Route, Routes } from "react-router-dom";
-
 import ROUTES from "./ROUTES";
 import HomePage from "../pages/home/HomePage";
 import RegisterPage from "../pages/register/RegisterPage";
 import Error404Page from "../pages/404/Error404Page";
 import LoginPage from "../pages/login/LoginPage";
 import EditCardPage from "../pages/EditCardPage/EditCardPage";
-import SandboxPage from "../pages/Sandbox/SandboxPage";
 import CreateCardPage from "../pages/createCardPage/createCardPage";
 import AuthGuard from "../Guard/AuthGuard";
 import BizGuard from "../Guard/BizGuard";
@@ -56,7 +54,6 @@ const Router = () => {
                     </BizGuard>
                 }
             />
-            <Route path={ROUTES.SANDBOX} element={<SandboxPage />}></Route>
             <Route path={ROUTES.ABOUT} element={<AboutComp />}></Route>
             <Route
                 path={ROUTES.FAVORITES}

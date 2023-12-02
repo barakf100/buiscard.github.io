@@ -9,7 +9,6 @@ const MapComponent = (address) => {
     const [coordinates, setCoordinates] = useState([0, 0]);
     console.log(address.address);
     useEffect(() => {
-        // Function to convert address to coordinates using Nominatim API
         const geocodeAddress = async () => {
             try {
                 const response = await axios.get(
@@ -27,7 +26,6 @@ const MapComponent = (address) => {
             }
         };
 
-        // Call the geocoding function
         geocodeAddress();
     }, [address]);
     useEffect(() => {
