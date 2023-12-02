@@ -8,7 +8,7 @@ import useQueryParams from "../../hooks/useQueryParams";
 import getCardFromServer from "./axios/getcards";
 import axios from "axios";
 import ToastGuard from "../../Guard/ui/toast";
-
+import team from "../../../public/assets/imgs/team.jpg";
 const HomePage = () => {
     const [dataFromServer, setDataFromServer] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
@@ -102,7 +102,7 @@ const HomePage = () => {
                         journey to amplify your presence, engage with your audience, and unlock new possibilities. Your success story begins
                         here.
                     </Typography>
-                    <img src="/assets/imgs/team.jpg" alt="team work" width="45%" height="100%" />
+                    <img src={team} alt="team work" width="45%" height="100%" />
                 </Container>
             </Container>
             <Grid container spacing={2} sx={{ mt: 8 }}>
